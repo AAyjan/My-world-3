@@ -1,366 +1,791 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My World - Group Project</title>
-    <style>
-        /* Modern CSS Reset & Variable Setup */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My World - Travel & Team Portfolio</title>
 
-        :root {
-            --bg-color: #0d1117;
-            --card-bg: rgba(22, 27, 34, 0.8);
-            --accent-color: #ff6b6b;
-            --accent-gradient: linear-gradient(135deg, #ff6b6b, #ff8e53);
-            --text-color: #f0f6fc;
-            --text-secondary: #8b949e;
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  <style>
+    /* ==================== GLOBAL STYLES ==================== */
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --accent: #f59e0b;
+      --dark-bg: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --border-color: rgba(255, 255, 255, 0.1);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
 
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(13, 17, 23, 0.85);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--glass-border);
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.2rem 2rem;
-        }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--dark-bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
-        }
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
 
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
 
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-        /* Hero Section (Main) */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 6rem 2rem 2rem 2rem;
-            background: radial-gradient(circle at center, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
-        }
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
 
-        .hero-content {
-            max-width: 800px;
-        }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 50px;
+      font-size: 1.1rem;
+    }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
+    /* ==================== NAVBAR ==================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 18px 0;
+      transition: all 0.3s ease;
+    }
 
-        .hero span {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 2rem;
-            background: var(--accent-gradient);
-            color: white;
-            border: none;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+    .logo span {
+      color: var(--primary);
+    }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
-        }
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
 
-        /* Meals Section */
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    .nav-links a {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
+    .nav-links a:hover, .nav-links a.active {
+      color: #fff;
+    }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--accent-gradient);
-            margin: 10px auto 0;
-            border-radius: 2px;
-        }
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
 
-        .meals-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+    /* ==================== HERO SECTION ==================== */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding-top: 120px;
+      background: radial-gradient(circle at center, rgba(37, 99, 235, 0.15) 0%, rgba(15, 23, 42, 1) 70%);
+      position: relative;
+    }
 
-        .meal-card {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
-        }
+    .hero-content h1 {
+      font-size: 3.8rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
 
-        .meal-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-color);
-        }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 35px auto;
+    }
 
-        .meal-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+    }
 
-        .meal-info {
-            padding: 1.5rem;
-        }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    }
 
-        .meal-info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
 
-        .meal-info p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
+    /* ==================== MAIN PLACES (LAYOUT BASED ON SKETCH) ==================== */
+    .main-section {
+      padding: 80px 0;
+    }
 
-        /* About Us Section (5 Team Members) */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-        }
+    .sketch-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
 
-        .team-card {
-            background: var(--card-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            transition: transform 0.3s;
-        }
+    .sketch-row {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 30px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
 
-        .team-card:hover {
-            transform: translateY(-5px);
-        }
+    .sketch-row:hover {
+      transform: translateY(-5px);
+      border-color: rgba(37, 99, 235, 0.4);
+    }
 
-        .avatar {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            background: var(--accent-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.2rem;
-            font-size: 2rem;
-            font-weight: bold;
-            color: white;
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.2);
-        }
+    .sketch-row.reverse {
+      flex-direction: row-reverse;
+    }
 
-        .team-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.3rem;
-        }
+    .sketch-img-container {
+      flex: 1;
+      height: 320px;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+    }
 
-        .team-card .role {
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-        }
+    .sketch-img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
 
-        .team-card p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
+    .sketch-row:hover .sketch-img-container img {
+      transform: scale(1.05);
+    }
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: rgba(13, 17, 23, 0.95);
-            border-top: 1px solid var(--glass-border);
-            color: var(--text-secondary);
-        }
+    .sketch-text-container {
+      flex: 1;
+    }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links { gap: 1rem; }
-        }
-    </style>
+    .place-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(37, 99, 235, 0.2);
+      color: #60a5fa;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .sketch-text-container h3 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .sketch-text-container p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .place-details {
+      display: flex;
+      gap: 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .placedetails {
+      display: flex;
+      gap: 20px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .place-details i {
+      color: var(--primary);
+      margin-right: 6px;
+    }
+
+    /* ==================== ABOUT US (TEAM SECTION) ==================== */
+    .about-section {
+      padding: 80px 0;
+      background: rgba(15, 23, 42, 0.5);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .team-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 25px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(37, 99, 235, 0.5);
+    }
+
+    .team-img-wrapper {
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 20px auto;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid var(--primary);
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+    }
+
+    .team-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .team-card h4 {
+      font-size: 1.3rem;
+      margin-bottom: 5px;
+    }
+
+    .team-role {
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .team-bio {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+
+    .team-socials {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .team-socials a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+    }
+
+    .team-socials a:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* ==================== CONTACT US SECTION ==================== */
+    .contact-section {
+      padding: 80px 0;
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px;
+    }
+
+    .contact-info h3 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .contact-info p {
+      color: var(--text-muted);
+      margin-bottom: 30px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .info-item i {
+      width: 45px;
+      height: 45px;
+      border-radius: 10px;
+      background: rgba(37, 99, 235, 0.2);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      color: #fff;
+      font-family: inherit;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+      background: #090d16;
+      border-top: 1px solid var(--border-color);
+      padding: 60px 0 30px 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-about h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .footer-about p {
+      color: var(--text-muted);
+      max-width: 320px;
+    }
+
+    .footer-links h4 {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 30px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* ==================== RESPONSIVE DESIGN ==================== */
+    @media (max-width: 992px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sketch-row, .sketch-row.reverse {
+        flex-direction: column;
+      }
+      .sketch-img-container {
+        width: 100%;
+      }
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Header Section -->
-    <header>
-        <nav class="navbar">
-            <div class="logo">My World</div>
-            <ul class="nav-links">
-                <li><a href="#main">Main</a></li>
-                <li><a href="#meals">My Favorite Meal</a></li>
-                <li><a href="#about">About Us</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-earth-americas"></i> My<span>World</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#places">Places</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-btn">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
 
-    <!-- Main / Hero Section -->
-    <section id="main" class="hero">
-        <div class="hero-content">
-            <h1>Welcome to <span>My World</span> Portal</h1>
-            <p>This is a website created by our 5-member team. Here you can discover our world and learn more about our favorite meals!</p>
-            <a href="#meals" class="btn">View Favorite Meals</a>
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero" id="hero">
+    <div class="container hero-content">
+      <h1>Explore The World With Us</h1>
+      <p>Welcome to our team portfolio. Here we document our shared journeys, favorite destinations, and moments as a group of 6 passionate explorers.</p>
+      <a href="#places" class="btn btn-primary">Discover Places</a>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN PLACES SECTION ==================== -->
+  <section class="main-section" id="places">
+    <div class="container">
+      <h2 class="section-title">Places We Have Visited</h2>
+      <p class="section-subtitle">A visual journal of our team travels and adventures</p>
+
+      <div class="sketch-layout">
+        
+        <!-- Place Item 1 (Image Left, Text Right) -->
+        <div class="sketch-row">
+          <div class="sketch-img-container">
+            <img src="https://karakalpakstan.travel/data/uploads/00_media/2024/oktyabr/karateren/photo_2024-10-22_12-25-19.jpg" alt="Destination 1">
+          </div>
+          <div class="sketch-text-container">
+            <span class="place-tag">KArateren</span>
+            <h3>Mountain Adventure</h3>
+            <p>Write your detailed description here about your journey to this amazing mountain location. Share what your team experienced, discovered, and enjoyed during the trip.</p>
+            <div class="place-details">
+              <span><i class="fa-solid fa-location-dot"></i> Location Name</span>
+              <span><i class="fa-solid fa-calendar"></i> May 2024</span>
+            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- My Favorite Meal Section -->
-    <section id="meals" class="section">
-        <h2 class="section-title">My Favorite Meal</h2>
-        <div class="meals-grid">
-            
-            <div class="meal-card">
-                <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=600&auto=format&fit=crop&q=60" alt="Plov" class="meal-img">
-                <div class="meal-info">
-                    <h3>Traditional Plov</h3>
-                    <p>The crown jewel of traditional cuisine. A delicious harmony of rice, tender meat, sweet carrots, and aromatic spices.</p>
-                </div>
+        <!-- Place Item 2 (Text Left, Image Right) -->
+        <div class="sketch-row reverse">
+          <div class="sketch-img-container">
+            <img src="https://cdn.pixabay.com/photo/2019/12/22/16/45/uzbekistan-4712936_960_720.jpg" alt="Destination 2">
+          </div>
+          <div class="sketch-text-container">
+            <span class="place-tag">Xivha</span>
+            <h3>City Skyline Tour</h3>
+            <p>Write your detailed description here about visiting this vibrant city. Describe the architecture, cultural highlights, and memorable moments your team shared.</p>
+            <div class="place-details">
+              <span><i class="fa-solid fa-location-dot"></i> City Name</span>
+              <span><i class="fa-solid fa-calendar"></i> August 2024</span>
             </div>
-
-            <div class="meal-card">
-                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&auto=format&fit=crop&q=60" alt="Pizza" class="meal-img">
-                <div class="meal-info">
-                    <h3>Pepperoni Pizza</h3>
-                    <p>A world-famous Italian dish topped with rich melted cheese and spicy pepperoni slices.</p>
-                </div>
-            </div>
-
-            <div class="meal-card">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&auto=format&fit=crop&q=60" alt="Burger" class="meal-img">
-                <div class="meal-info">
-                    <h3>Juicy Burger</h3>
-                    <p>A savory fast-food favorite made with a soft bun, juicy patty, fresh vegetables, and special sauce.</p>
-                </div>
-            </div>
-
+          </div>
         </div>
-    </section>
 
-    <!-- About Us Section (5 Members) -->
-    <section id="about" class="section">
-        <h2 class="section-title">About Us</h2>
-        <div class="team-grid">
-            
-            <div class="team-card">
-                <div class="avatar">SM</div>
-                <h3>Saatbaev Maxsud</h3>
-                <div class="role">Team Leader</div>
-                <p>Project manager responsible for coordinating team tasks and overall progress.</p>
+        <!-- Place Item 3 (Image Left, Text Right) -->
+        <div class="sketch-row">
+          <div class="sketch-img-container">
+            <img src="https://karakalpakstan.travel/data/uploads/00_media/2024/oktyabr/karateren/photo_2024-10-22_12-26-10.jpg" alt="Destination 3">
+          </div>
+          <div class="sketch-text-container">
+            <span class="place-tag">Kareteren</span>
+            <h3>Coastal Getaway</h3>
+            <p>Write your detailed description here about your ocean side retreat. Highlight the sunsets, activities, and team bonding moments by the sea.</p>
+            <div class="place-details">
+              <span><i class="fa-solid fa-location-dot"></i> Beach Name</span>
+              <span><i class="fa-solid fa-calendar"></i> October 2024</span>
             </div>
-
-            <div class="team-card">
-                <div class="avatar">TA</div>
-                <h3>Tenelbaev Azamat</h3>
-                <div class="role">Frontend Developer</div>
-                <p>Developer responsible for building the website structure and layout design.</p>
-            </div>
-
-            <div class="team-card">
-                <div class="avatar">JB</div>
-                <h3>Juginisov Bahadir</h3>
-                <div class="role">Web Designer</div>
-                <p>Creative designer in charge of color schemes and visual concepts.</p>
-            </div>
-
-            <div class="team-card">
-                <div class="avatar">MA</div>
-                <h3>Minbaev Allayar</h3>
-                <div class="role">Content Manager</div>
-                <p>Specialist responsible for preparing and editing all website texts and data.</p>
-            </div>
-
-            <div class="team-card">
-                <div class="avatar">AA</div>
-                <h3>Artiqbaev Allayar</h3>
-                <div class="role">QA & Testing</div>
-                <p>Quality assurance specialist testing website performance and responsiveness.</p>
-            </div>
-
+          </div>
         </div>
-    </section>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2026 My World | Team Project. All rights reserved.</p>
-    </footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT US SECTION ==================== -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <h2 class="section-title">About Us</h2>
+      <p class="section-subtitle">Meet our team of 6 members</p>
+
+      <div class="team-grid">
+        
+        <!-- Member 1: Allaniyazova Ayjan -->
+        <div class="team-card">
+          <div class="team-img-wrapper">
+            <img src="https://i.pinimg.com/736x/93/ad/8f/93ad8f4a3d47ff56a0f1e7fe0b19d64a.jpg" alt="Allaniyazova Ayjan">
+          </div>
+          <h4>Allaniyazova Ayjan</h4>
+          <div class="team-role">Team Member</div>
+          <p class="team-bio">Write a brief description or bio about Ayjan here.</p>
+          <div class="team-socials">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Member 2: Bazarbaeva Aydina -->
+        <div class="team-card">
+          <div class="team-img-wrapper">
+            <img src="https://i.pinimg.com/originals/42/b9/d5/42b9d5a7658cb677af4bc4a933a3d039.jpg" alt="Bazarbaeva Aydina">
+          </div>
+          <h4>Bazarbaeva Aydina</h4>
+          <div class="team-role">Team Member</div>
+          <p class="team-bio">Write a brief description or bio about Aydina here.</p>
+          <div class="team-socials">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Member 3: Abdiraxmanova Jansila -->
+        <div class="team-card">
+          <div class="team-img-wrapper">
+            <img src="https://i.pinimg.com/736x/85/96/f8/8596f88bde3eab4508a3f06626559a49.jpg" alt="Abdiraxmanova Jansila">
+          </div>
+          <h4>Abdiraxmanova Jansila</h4>
+          <div class="team-role">Team Member</div>
+          <p class="team-bio">Write a brief description or bio about Jansila here.</p>
+          <div class="team-socials">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Member 4: Nurmaganbetova Aynur -->
+        <div class="team-card">
+          <div class="team-img-wrapper">
+            <img src="https://gd-hbimg.huaban.com/9b3f85a33269dbd13ac74ea2a2b60ea06611743ea8fd84-oAY6s0_fw236" alt="Nurmaganbetova Aynur">
+          </div>
+          <h4>Nurmaganbetova Aynur</h4>
+          <div class="team-role">Team Member</div>
+          <p class="team-bio">Write a brief description or bio about Aynur here.</p>
+          <div class="team-socials">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Member 5: Ispandiyarova Jasmin -->
+        <div class="team-card">
+          <div class="team-img-wrapper">
+            <img src="https://th.bing.com/th/id/R.5c7c95164dc5ce0d03add742113d4ed3?rik=93XX3xVubFJBtQ&pid=ImgRaw&r=0" alt="Ispandiyarova Jasmin">
+          </div>
+          <h4>Ispandiyarova Jasmin</h4>
+          <div class="team-role">Team Member</div>
+          <p class="team-bio">Write a brief description or bio about Jasmin here.</p>
+          <div class="team-socials">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+        <!-- Member 6: Polatov Azamat -->
+        <div class="team-card">
+          <div class="team-img-wrapper">
+            <img src="https://tse4.mm.bing.net/th/id/OIP.QwKqSMhtDTj2_cvezd6fzwHaNL?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Polatov Azamat">
+          </div>
+          <h4>Polatov Azamat</h4>
+          <div class="team-role">Team Member</div>
+          <p class="team-bio">Write a brief description or bio about Azamat here.</p>
+          <div class="team-socials">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT US SECTION ==================== -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-subtitle">Get in touch with our team</p>
+
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <h3>Let's Connect</h3>
+          <p>Have questions, collaboration ideas, or want to know more about our travels? Send us a message!</p>
+          
+          <div class="info-item">
+            <i class="fa-solid fa-envelope"></i>
+            <div>
+              <strong>Email</strong>
+              <p>ayjanallaniyazova09@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fa-solid fa-phone"></i>
+            <div>
+              <strong>Phone</strong>
+              <p>+998 12 345 67 89</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>
+              <strong>Location</strong>
+              <p>Chimbay Karakalpakistan</p>
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent!');">
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <h3>My<span>World</span></h3>
+          <p>A group project dedicated to exploring beautiful places and sharing memories together.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#places">Places</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Follow Us</h4>
+          <ul>
+            <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+            <li><a href="#"><i class="fa-brands fa-telegram"></i> Telegram</a></li>
+            <li><a href="#"><i class="fa-brands fa-youtube"></i> YouTube</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 My World Team. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
